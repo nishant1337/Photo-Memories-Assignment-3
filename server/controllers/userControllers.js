@@ -7,7 +7,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400).json({ message: "User already exits" });
+    res.status(400).json({ message: "User is already exists" });
   }
 
   const user = await User.create({ name, email, password, pic });
@@ -21,7 +21,7 @@ const registerUser = asyncHandler(async (req, res) => {
       pic: user.pic,
     });
   } else {
-    res.status(400).json({ message: "Error creating user" });
+    res.status(400).json({ message: "Error while creating user" });
   }
 });
 
